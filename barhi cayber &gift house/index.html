@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Barhi Cyber & Gift House</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: Arial, sans-serif; }
+    body { background: linear-gradient(135deg, #abd3c0, #ba9dc2); color: rgb(255, 255, 255); }
+    header { text-align: center; padding: 20px; background: rgba(0,0,0,0.3); }
+    nav { display: flex; justify-content: center; gap: 20px; padding: 10px; background: rgba(0,0,0,0.4); }
+    nav a { color: white; text-decoration: none; font-weight: bold; }
+    section { padding: 40px 20px; text-align: center; }
+    h1, h2 { margin-bottom: 20px; }
+    .services, .gallery, .payment { display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; }
+    .card { background: rgba(255,255,255,0.1); padding: 20px; border-radius: 10px; width: 250px; }
+    form { display: flex; flex-direction: column; gap: 10px; max-width: 400px; margin: auto; background: rgba(255,255,255,0.1); padding: 20px; border-radius: 10px; }
+    input, textarea, select, button { padding: 10px; border: none; border-radius: 5px; }
+    button { background: #ff9800; color: white; cursor: pointer; font-weight: bold; }
+    button:hover { background: #e68900; }
+    .success-message { display: none; color: #00ff88; margin-top: 10px; font-weight: bold; }
+    img { max-width: 100%; border-radius: 10px; }
+    @media(max-width: 600px) {
+      .services, .gallery, .payment { flex-direction: column; align-items: center; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Barhi Cyber & Gift House</h1>
+  <p>Your One-Stop Solution for Cyber Services & Gifts</p>
+</header>
+
+<nav>
+  <a href="#home">Home</a>
+  <a href="#about">About</a>
+  <a href="#services">Services</a>
+  <a href="#gallery">Gallery</a>
+  <a href="#payment">Payment</a>
+  <a href="#order">Order</a>
+</nav>
+
+<section id="home">
+  <h2>Welcome to Barhi Cyber & Gift House</h2>
+  <p>We provide all cyber services, printing, recharges, lamination, and a wide range of gifts for every occasion.</p>
+</section>
+
+<section id="about">
+  <h2>About Us</h2>
+  <p>Located at Barhi Chowk, we are dedicated to offering the best cyber café services and unique gift items to our customers.</p>
+</section>
+
+<section id="services" class="services">
+  <div class="card"><h3>Printing & Scanning</h3><p>High-quality print and scan services.</p></div>
+  <div class="card"><h3>Online Services</h3><p>Bill payments, form filling, and more.</p></div>
+  <div class="card"><h3>Gift Shop</h3><p>Beautiful gifts for every occasion.</p></div>
+</section>
+
+<section id="gallery" class="gallery">
+  <img src="https://via.placeholder.com/300x200" alt="Gift Item">
+  <img src="https://via.placeholder.com/300x200" alt="Cyber Cafe">
+  <img src="https://via.placeholder.com/300x200" alt="Printing Service">
+</section>
+
+<section id="payment" class="payment">
+  <div class="card"><h3>Pay via UPI</h3><p>UPI ID: barhicyber@upi</p></div>
+  <div class="card"><h3>Google Pay</h3><p>Number: +91 86760 88043</p></div>
+  <div class="card"><h3>PhonePe</h3><p>Number: +91 86760 88043</p></div>
+  <div class="card"><h3>Paytm</h3><p>Number: +91 86760 88043</p></div>
+</section>
+
+<section id="order">
+  <h2>Place Your Order</h2>
+  <form id="orderForm">
+    <input type="text" name="name" placeholder="Your Name" required>
+    <input type="email" name="email" placeholder="Your Email" required>
+    <textarea name="orderDetails" placeholder="Order Details" required></textarea>
+    <select name="paymentMethod" required>
+      <option value="">Select Payment Method</option>
+      <option value="UPI">UPI</option>
+      <option value="Google Pay">Google Pay</option>
+      <option value="PhonePe">PhonePe</option>
+      <option value="Paytm">Paytm</option>
+    </select>
+    <button type="submit">Submit Order</button>
+    <div class="success-message">✅ Order placed successfully!</div>
+  </form>
+</section>
+
+<script>
+  document.getElementById('orderForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    fetch('https://formsubmit.co/ajax/intekhab844@gmail.com', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify({
+        name: e.target.name.value,
+        email: e.target.email.value,
+        orderDetails: e.target.orderDetails.value,
+        paymentMethod: e.target.paymentMethod.value
+      })
+    })
+    .then(response => response.json())
+    .then(data => {
+      document.querySelector('.success-message').style.display = 'block';
+      e.target.reset();
+    })
+    .catch(error => alert('Error placing order. Please try again.'));
+  });
+</script>
+
+</body>
+</html>
